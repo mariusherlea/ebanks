@@ -17,13 +17,17 @@ public class User{
 
     private String username;
 
+    private String firstName;
+
+    private String lastName;
+
     private String password;
 
     @Transient
     private String passwordConfirm;
 
-    @ManyToMany
-    private Set<Role> roles;
+    @ManyToOne
+    private Role roles;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
@@ -38,12 +42,15 @@ public class User{
     public User() {
     }
 
-    public User(String username, String password, String passwordConfirm, Set<Role> roles) {
+    public User(String username, String firstName, String lastName, String password, String passwordConfirm, Role roles, Date createDate, Date modifyDate) {
         this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password = password;
         this.passwordConfirm = passwordConfirm;
         this.roles = roles;
-
+        this.createDate = createDate;
+        this.modifyDate = modifyDate;
     }
 
     public Long getId() {
@@ -62,6 +69,22 @@ public class User{
         this.username = username;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -78,11 +101,11 @@ public class User{
         this.passwordConfirm = passwordConfirm;
     }
 
-    public Set<Role> getRoles() {
+    public Role getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Role roles) {
         this.roles = roles;
     }
 
@@ -109,6 +132,8 @@ public class User{
         User user = (User) o;
         return Objects.equals(id, user.id) &&
                 Objects.equals(username, user.username) &&
+                Objects.equals(firstName, user.firstName) &&
+                Objects.equals(lastName, user.lastName) &&
                 Objects.equals(password, user.password) &&
                 Objects.equals(passwordConfirm, user.passwordConfirm) &&
                 Objects.equals(roles, user.roles) &&
@@ -118,7 +143,7 @@ public class User{
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, passwordConfirm, roles, createDate, modifyDate);
+        return Objects.hash(id, username, firstName, lastName, password, passwordConfirm, roles, createDate, modifyDate);
     }
 
     @Override
@@ -126,6 +151,8 @@ public class User{
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 ", passwordConfirm='" + passwordConfirm + '\'' +
                 ", roles=" + roles +
