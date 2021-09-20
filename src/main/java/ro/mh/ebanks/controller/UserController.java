@@ -1,6 +1,10 @@
 package ro.mh.ebanks.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,6 +13,10 @@ import ro.mh.ebanks.model.User;
 import ro.mh.ebanks.service.SecurityService;
 import ro.mh.ebanks.service.UserService;
 import ro.mh.ebanks.validator.UserValidator;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 @Controller
 public class UserController {
@@ -55,7 +63,14 @@ public class UserController {
     }
 
     @GetMapping({"/", "/welcome"})
-    public String welcome(Model model) {
+    public String welcome(Model model, HttpServletRequest request) {
+        org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User _user = userService.findByUsername(user.getUsername());
+        HttpSession session = request.getSession();
+        session.setAttribute("currentUser", _user);
+
         return "welcome";
     }
+
+
 }

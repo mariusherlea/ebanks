@@ -12,6 +12,7 @@ import ro.mh.ebanks.model.Role;
 import ro.mh.ebanks.model.User;
 import ro.mh.ebanks.repository.UserRepository;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,9 +23,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String username) {
+    public UserDetails loadUserByUsername(String username) throws  UsernameNotFoundException{
         User user = userRepository.findByUsername(username);
-        if (user == null) throw new UsernameNotFoundException(username);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         Role role = user.getRoles();
@@ -32,5 +32,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //        }
 
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
+
+
     }
 }
