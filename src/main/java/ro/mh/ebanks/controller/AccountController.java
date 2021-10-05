@@ -1,21 +1,19 @@
 package ro.mh.ebanks.controller;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import ro.mh.ebanks.converter.AccountConverter;
+import ro.mh.ebanks.exeption.ResourceNotFoundException;
 import ro.mh.ebanks.model.Account;
 import ro.mh.ebanks.repository.AccountRepository;
 import ro.mh.ebanks.repository.UserRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -29,11 +27,9 @@ public class AccountController {
     @Autowired
     private AccountRepository accountRepository;
 
-    private AccountConverter accountConverter;
-
 
     @GetMapping("/accounts")
-    public String getAllAccount( Model model, String error, String logout, HttpServletRequest request) {
+    public String getAllAccount( HttpServletRequest request) {
 
         List<Account> account=accountRepository.findAll();
 
@@ -43,14 +39,35 @@ public class AccountController {
         return "account";
     }
 
-    @GetMapping("/accounts/{postId}")
-    public String getAllCommentsByPostId(@PathVariable(value = "postId") Long postId, HttpServletRequest request, Model model) {
-        List<Account>accounts = accountRepository.findByUserId(postId);
+    @GetMapping("/accounts/{userId}")
+    public String getAllAccountsByUserId(@PathVariable(value = "userId") Long userId, HttpServletRequest request) {
+        List<Account>accounts = accountRepository.findByUserId(userId);
 
         HttpSession session = request.getSession();
         session.setAttribute("accounts", accounts );
 
-        return "account2";
+        return "accountByUserId";
+    }
+
+    @PostMapping("/accounts/{userId}/")
+    public Account createAccount(@PathVariable (value = "userId") Long userId,
+                                 @Valid @RequestBody Account account) {
+        return userRepository.findById(userId).map(user -> {
+            account.setUser(user);
+            return accountRepository.save(account);
+        }).orElseThrow(() -> new ResourceNotFoundException( userId ));
+    }
+
+
+    @GetMapping("/addForm")
+    public static String maScarpin(){
+        return "addAccount";
+    }
+
+    @PostMapping("/greeting")
+    public String greetingSubmit(@ModelAttribute Account account, Model model) {
+        model.addAttribute("greeting", account);
+        return "FormResponse";
     }
 
 }
