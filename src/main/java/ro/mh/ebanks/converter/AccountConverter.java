@@ -5,7 +5,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import ro.mh.ebanks.dto.AccountDto;
 
-import ro.mh.ebanks.model.Account;
+import ro.mh.ebanks.model.Account1;
 
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class AccountConverter {
-    public AccountDto entityToDto(Account account) {
+    public AccountDto entityToDto(Account1 account1) {
 
 //		StudentDto dto = new StudentDto();
 //		dto.setId(student.getId());
@@ -24,18 +24,18 @@ public class AccountConverter {
 //		return dto;
 
         ModelMapper mapper =new ModelMapper();
-        AccountDto map = mapper.map(account, AccountDto.class);
+        AccountDto map = mapper.map(account1, AccountDto.class);
         return map;
 
     }
-    public  List<AccountDto> entityToDto(List<Account> accounts) {
+    public  List<AccountDto> entityToDto(List<Account1> account1s) {
 
-        return	accounts.stream().map(x -> entityToDto(x)).collect(Collectors.toList());
+        return	account1s.stream().map(x -> entityToDto(x)).collect(Collectors.toList());
 
     }
 
 
-    public Account dtoToEntity(AccountDto dto)
+    public Account1 dtoToEntity(AccountDto dto)
     {
 //		Student st = new Student();
 //		st.setId(dto.getId());
@@ -46,11 +46,11 @@ public class AccountConverter {
 //		return st;
 
         ModelMapper mapper = new ModelMapper();
-        Account map = mapper.map(dto, Account.class);
+        Account1 map = mapper.map(dto, Account1.class);
         return map;
     }
 
-    public List<Account> dtoToEntity(List<AccountDto> dto)
+    public List<Account1> dtoToEntity(List<AccountDto> dto)
     {
 
         return dto.stream().map(x -> dtoToEntity(x)).collect(Collectors.toList());

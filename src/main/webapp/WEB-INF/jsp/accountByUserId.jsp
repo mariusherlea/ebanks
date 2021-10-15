@@ -4,10 +4,10 @@
 
 <jsp:include page="Header.jsp"/>
 
-<input type="button" value="Add Account" onclick="window.location.href='/accounts/{userId}/'; return false;"/>
+<input type="button" value="Add Account" onclick="window.location.href='/addForm'; return false;"/>
 
 <table>
-    <c:forEach items="${accounts}" var="product">
+    <c:forEach items="${account1s}" var="product">
         <tr>
             <td>${product.id}</td>
             <td><c:out value="${product.bank}" /></td>

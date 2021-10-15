@@ -8,8 +8,8 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "account")
-public class Account extends AuditModel{
+@Table(name = "account1")
+public class Account1 extends AuditModel{
 
     @Id
     @Column(name = "id")
@@ -36,10 +36,10 @@ public class Account extends AuditModel{
    /* @Column(name = "state")
     private State state;*/
 
-    public Account() {
+    public Account1() {
     }
 
-    public Account(Long accountNumber, String bank, User user, Double amount) {
+    public Account1(Long accountNumber, String bank, User user, Double amount) {
         this.accountNumber = accountNumber;
         this.bank = bank;
         this.user = user;
@@ -90,12 +90,12 @@ public class Account extends AuditModel{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Account account = (Account) o;
-        return Objects.equals(id, account.id) &&
-                Objects.equals(accountNumber, account.accountNumber) &&
-                Objects.equals(bank, account.bank) &&
-                Objects.equals(user, account.user) &&
-                Objects.equals(amount, account.amount);
+        Account1 account1 = (Account1) o;
+        return Objects.equals(id, account1.id) &&
+                Objects.equals(accountNumber, account1.accountNumber) &&
+                Objects.equals(bank, account1.bank) &&
+                Objects.equals(user, account1.user) &&
+                Objects.equals(amount, account1.amount);
     }
 
     @Override

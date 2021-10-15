@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Log in with your account</title>
+    <title>Log in with your account1</title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 
@@ -29,7 +29,7 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-            <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
+            <h4 class="text-center"><a href="${contextPath}/registration">Create an account1</a></h4>
         </div>
     </form>
 </div>

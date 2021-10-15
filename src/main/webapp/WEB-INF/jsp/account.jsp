@@ -6,7 +6,7 @@
 
 
 <table>
-    <c:forEach items="${account}" var="product">
+    <c:forEach items="${account1}" var="product">
         <tr>
             <td>${product.id}</td>
             <td><c:out value="${product.bank}" /></td>

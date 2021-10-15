@@ -17,7 +17,7 @@ public class Transaction {
     @OneToOne
     @JoinColumn(name = "debit_id")
     @JsonBackReference("debit")
-    private Account debitAccount;
+    private Account1 debitAccount1;
 
     @Column(name = "final_amount_source_account")
     private Double finalAmountSourceAccount;
@@ -25,7 +25,7 @@ public class Transaction {
     @OneToOne
     @JoinColumn(name = "credit_id")
     @JsonBackReference("credit")
-    private Account creditAccount;
+    private Account1 creditAccount1;
 
     @Column(name = "final_amount_target_account")
     private Double finalAmountTargetAccount;

@@ -1,12 +1,15 @@
 <%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
 <jsp:include page="Header.jsp"/>
 
+<form method="post" action="/addEmployee" modelAttribute="employee">
 
-<form action="@/{FormResponse}" th:th:action="@{/FormResponse}" th:object="${account}" method="post">
-    <p>Id: <input type="text" th:field="*{id}" /></p>
-    <p>FirstName: <input type="text" th:field="*{firstName}" /></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-</form>
 
+        Amount: <input type = "text" name = "amount">
+        <br />
+        Bank: <input type = "text" name = "bank" />
+        <input type = "submit" value = "Submit" />
+    </form>
+
+    </form>
 
 <jsp:include page="Footer.jsp"/>

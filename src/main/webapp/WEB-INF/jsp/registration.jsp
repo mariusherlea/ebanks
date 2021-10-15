@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Create an account</title>
+    <title>Create an account1</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" rel="stylesheet">
 
 
@@ -19,7 +19,7 @@
 <div class="container">
 
     <form:form method="POST" modelAttribute="userForm" class="form-signin">
-        <h2 class="form-signin-heading">Create your account</h2>
+        <h2 class="form-signin-heading">Create your account1</h2>
         <spring:bind path="username">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="username" class="form-control" placeholder="Username"
