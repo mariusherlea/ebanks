@@ -9,17 +9,17 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "account")
-public class Account extends AuditModel{
+public class Account {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     /*@Column(name = "number_account", unique = true)
     @NotNull(message = "Number account must be between 4 to 15 characters")
     @Size(min = 4, max = 15)*/
-    private Long accountNumber;
+    private int accountNumber;
 
     @Column(name = "bank")
     private String bank;
@@ -39,26 +39,26 @@ public class Account extends AuditModel{
     public Account() {
     }
 
-    public Account(Long accountNumber, String bank, User user, Double amount) {
+    public Account(int accountNumber, String bank, User user, Double amount) {
         this.accountNumber = accountNumber;
         this.bank = bank;
         this.user = user;
         this.amount = amount;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getAccountNumber() {
+    public int getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(Long accountNumber) {
+    public void setAccountNumber(int accountNumber) {
         this.accountNumber = accountNumber;
     }
 
