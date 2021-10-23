@@ -48,9 +48,10 @@
                         </c:url>
 
                         <tr>
-                            <td>${tempCustomer.firstName}</td>
-                            <td>${tempCustomer.lastName}</td>
-                            <td>${tempCustomer.email}</td>
+                            <td>${tempCustomer.accountNumber}</td>
+                            <td>${tempCustomer.bank}</td>
+                            <td>${tempCustomer.user}</td>
+                            <td>${tempCustomer.amount}</td>
 
                             <td>
                                 <!-- display the update link --> <a href="${updateLink}">Update</a>

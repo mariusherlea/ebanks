@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ro.mh.ebanks.exeption.ResourceNotFoundException;
 import ro.mh.ebanks.model.Account;
 import ro.mh.ebanks.repository.AccountRepository;
 import ro.mh.ebanks.repository.UserRepository;
@@ -68,7 +67,7 @@ public class AccountController {
     @PostMapping("/saveCustomer")
     public String saveCustomer(@ModelAttribute("customer") Account theCustomer) {
         accountService.saveAccount(theCustomer);
-        return "redirect:/customer/list";
+        return "redirect:/welcome";
     }
 
     @GetMapping("/updateForm")
@@ -82,7 +81,7 @@ public class AccountController {
     @GetMapping("/delete")
     public String deleteCustomer(@RequestParam("customerId") int theId) {
         accountService.deleteCustomer(theId);
-        return "redirect:/customer/list";
+        return "redirect:/welcome";
     }
 
 
