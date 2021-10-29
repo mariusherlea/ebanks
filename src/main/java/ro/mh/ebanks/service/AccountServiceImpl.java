@@ -16,10 +16,10 @@ public class AccountServiceImpl implements AccountService {
     private AccountRepository accountRepository;
 
 
-    @Override
+    /*@Override
     public List<Account> getAccounts() {
         return accountRepository.findAll();
-    }
+    }*/
 
     @Override
     public List<Account> getAccountsByUserId(Long userId) {
@@ -41,19 +41,19 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     @Transactional
-    public void saveAccount(Account theCustomer) {
-        accountRepository.save(theCustomer);
+    public void saveAccount(Account theAccount) {
+        accountRepository.save(theAccount);
     }
 
     @Override
     @Transactional
-    public Account getCustomer(int theId) {
+    public Account getAccount(int theId) {
         return accountRepository.findById(theId);
     }
 
     @Override
     @Transactional
-    public void deleteCustomer(int theId) {
+    public void deleteAccount(int theId) {
         accountRepository.deleteById(theId);
     }
 

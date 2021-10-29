@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Spring MVC 5 - form handling | Java Guides</title>
+    <title>Add account</title>
     <link href="<c:url value="/resources/css/bootstrap.min.css" />"
           rel="stylesheet">
     <script src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
@@ -16,15 +16,14 @@
 <body>
 <div class="container">
     <div class="col-md-offset-2 col-md-7">
-        <h2 class="text-center">Spring MVC 5 + Hibernate 5 + JSP + MySQL
-            Example</h2>
+
         <div class="panel panel-info">
             <div class="panel-heading">
-                <div class="panel-title">Add Customer</div>
+                <div class="panel-title">Add Account</div>
             </div>
             <div class="panel-body">
-                <form:form action="saveCustomer" cssClass="form-horizontal"
-                           method="post" modelAttribute="customer">
+                <form:form action="saveAccount" cssClass="form-horizontal"
+                           method="post" modelAttribute="account">
 
                     <!-- need to associate this data with customer id -->
                     <form:hidden path="id" />

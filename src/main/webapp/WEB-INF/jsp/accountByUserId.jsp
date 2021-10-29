@@ -11,12 +11,12 @@
 
 
         <c:url var="updateLink" value="/account/updateForm">
-            <c:param name="customerId" value="${account.id}" />
+            <c:param name="accountId" value="${account.id}" />
         </c:url>
 
         <!-- construct an "delete" link with customer id -->
         <c:url var="deleteLink" value="/account/delete">
-            <c:param name="customerId" value="${account.id}" />
+            <c:param name="accountId" value="${account.id}" />
         </c:url>
 
         <tr>

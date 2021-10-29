@@ -7,10 +7,8 @@ import java.util.Optional;
 
 public interface AccountService {
 
-    public List<Account> getAccounts();
 
     public List<Account> getAccountsByUserId(Long userId);
-
 
 
     public Optional<Account> getAccount(Long theId);
@@ -18,9 +16,9 @@ public interface AccountService {
 
     List<Account> getCustomers();
 
-    void saveAccount(Account theCustomer);
+    void saveAccount(Account theAccount);
 
-    Account getCustomer(int theId);
+    Account getAccount(int theId);
 
-    void deleteCustomer(int theId);
+    void deleteAccount(int theId);
 }

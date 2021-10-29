@@ -51,36 +51,36 @@ public class AccountController {
     }
 
     @GetMapping("/list")
-    public String listCustomers(Model theModel) {
-        List < Account > theCustomers = accountService.getCustomers();
-        theModel.addAttribute("customers", theCustomers);
-        return "list-customers";
+    public String listAccount(Model theModel) {
+        List < Account > theAccount = accountService.getCustomers();
+        theModel.addAttribute("account", theAccount);
+        return "list-accounts";
     }
 
     @GetMapping("/showForm")
     public String showFormForAdd(Model theModel) {
-        Account theCustomer = new Account();
-        theModel.addAttribute("customer", theCustomer);
-        return "customer-form";
+        Account theAccount = new Account();
+        theModel.addAttribute("account", theAccount);
+        return "account-form";
     }
 
-    @PostMapping("/saveCustomer")
-    public String saveCustomer(@ModelAttribute("customer") Account theCustomer) {
-        accountService.saveAccount(theCustomer);
+    @PostMapping("/saveAccount")
+    public String saveAccount(@ModelAttribute("account") Account theAccount) {
+        accountService.saveAccount(theAccount);
         return "redirect:/welcome";
     }
 
     @GetMapping("/updateForm")
-    public String showFormForUpdate(@RequestParam("customerId") int theId,
+    public String showFormForUpdate(@RequestParam("accountId") int theId,
                                     Model theModel) {
-        Account theCustomer = accountService.getCustomer(theId);
-        theModel.addAttribute("customer", theCustomer);
-        return "customer-form";
+        Account theAccount = accountService.getAccount(theId);
+        theModel.addAttribute("account", theAccount);
+        return "account-form";
     }
 
     @GetMapping("/delete")
-    public String deleteCustomer(@RequestParam("customerId") int theId) {
-        accountService.deleteCustomer(theId);
+    public String deleteAccount(@RequestParam("accountId") int theId) {
+        accountService.deleteAccount(theId);
         return "redirect:/welcome";
     }
 
